@@ -9,8 +9,12 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
   has_many :books, dependent: :destroy
+  
+  has_many :book_comments, dependent: :destroy
 
   validates :introduction, length: {maximum: 50}
+
+  has_many :favorites, dependent: :destroy
 
 
 
