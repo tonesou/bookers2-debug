@@ -43,6 +43,12 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
+  
+  def search
+  @books = Book.search(params[:keyword])
+  @keyword = params[:keyword]
+  render "edit"
+  end
 
   private
 

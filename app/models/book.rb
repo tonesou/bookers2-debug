@@ -7,6 +7,10 @@ class Book < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   
   has_many :favorites, dependent: :destroy
+  
+  def self.search(keyword)
+  where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+ end
 
 
   def favorited_by?(user)
